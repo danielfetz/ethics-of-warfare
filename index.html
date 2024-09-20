@@ -8,12 +8,28 @@
 <body>
   <div id="game-container">
     <div id="scene">
-      <!-- Dynamic content will be injected here -->
+      <div id="illustration">
+        <!-- Building -->
+        <img src="assets/building.svg" alt="Building" id="building" />
+
+        <!-- Rocket Launcher -->
+        <img src="assets/rocket_launcher.svg" alt="Rocket Launcher" id="rocket-launcher" />
+
+        <!-- Airstrike (Initially Hidden) -->
+        <img src="assets/airstrike.svg" alt="Airstrike" id="airstrike" />
+      </div>
+      <div id="scenario-text">
+        <h2>Scenario 1</h2>
+        <p>You receive intelligence that a rocket launcher is actively firing from the roof of a building. However, there are civilians inside. Do you order an airstrike?</p>
+      </div>
     </div>
+    
     <div id="choices">
-      <!-- Choice buttons will be injected here -->
+      <button class="choice-button" id="order-airstrike">Order the Airstrike</button>
+      <button class="choice-button" id="do-not-order">Do Not Order the Airstrike</button>
     </div>
-    <div id="feedback">
+    
+    <div id="feedback" class="hidden">
       <!-- Feedback text will appear here -->
     </div>
   </div>
