@@ -1,92 +1,69 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
   <style>
     <![CDATA[
-      /* Roof Animation */
-      #roof {
-        animation: roofAnimation 400ms linear infinite alternate-reverse forwards;
-      }
-      @keyframes roofAnimation {
-        0% {
-          d: path('M300,100 L200,200 L400,200 Z');
-          animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-        }
-        100% {
-          d: path('M300,100 L210,200 L390,200 Z');
-        }
-      }
-
-      /* Door Animation */
+      /* Simple Animation for the Door */
       #door {
-        animation: doorAnimation 400ms linear infinite alternate-reverse forwards;
+        animation: doorOpenClose 2000ms linear infinite alternate-reverse;
       }
-      @keyframes doorAnimation {
+
+      @keyframes doorOpenClose {
         0% {
-          transform: translate(0, 0);
-          animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+          transform: rotate(0deg);
         }
         100% {
-          transform: translate(5px, -5px);
+          transform: rotate(-10deg);
         }
       }
 
-      /* Window Animation */
-      .window {
-        animation: windowAnimation 400ms linear infinite alternate-reverse forwards;
-      }
-      @keyframes windowAnimation {
-        0% {
-          transform: scale(1);
-        }
-        100% {
-          transform: scale(1.05);
-        }
-      }
-
-      /* Smoke Animation */
+      /* Smoke Animation for Chimney */
       #smoke {
-        animation: smokeAnimation 2000ms linear infinite;
+        animation: smokeRise 3000ms linear infinite;
       }
-      @keyframes smokeAnimation {
+
+      @keyframes smokeRise {
         0% {
           transform: translate(0, 0) scale(1);
-          opacity: 0.8;
+          opacity: 0.6;
         }
         100% {
-          transform: translate(0, -20px) scale(1.5);
+          transform: translate(0, -30px) scale(1.2);
           opacity: 0;
         }
       }
     ]]>
   </style>
 
-  <!-- House Base -->
-  <g id="house" transform="translate(100, 200)">
+  <!-- House Structure -->
+  <g id="house" transform="translate(100, 100)">
     <!-- Roof -->
-    <path id="roof" d="M300,100 L200,200 L400,200 Z" fill="#8B0000" stroke="#000" stroke-width="4"/>
+    <path d="M200,50 L100,150 L300,150 Z" stroke="#000" stroke-width="2" fill="none"/>
 
     <!-- Main Body -->
-    <rect x="150" y="200" width="300" height="250" fill="#FFD700" stroke="#000" stroke-width="4"/>
+    <rect x="100" y="150" width="200" height="200" stroke="#000" stroke-width="2" fill="none"/>
 
     <!-- Door -->
-    <g id="door" transform="translate(0,0)">
-      <rect x="270" y="350" width="60" height="100" fill="#654321" stroke="#000" stroke-width="4"/>
-      <circle cx="330" cy="400" r="5" fill="#000"/>
+    <g id="door" transform="translate(180, 250)">
+      <rect x="0" y="0" width="40" height="100" stroke="#000" stroke-width="2" fill="none" />
+      <circle cx="35" cy="50" r="3" stroke="#000" stroke-width="2" fill="none"/>
     </g>
 
     <!-- Windows -->
-    <g class="window" transform="translate(0,0)">
-      <rect x="180" y="230" width="60" height="60" fill="#ADD8E6" stroke="#000" stroke-width="4"/>
-      <line x1="180" y1="260" x2="240" y2="260" stroke="#000" stroke-width="2"/>
-      <line x1="210" y1="230" x2="210" y2="290" stroke="#000" stroke-width="2"/>
+    <!-- Left Window -->
+    <g class="window" transform="translate(120, 170)">
+      <rect x="0" y="0" width="40" height="40" stroke="#000" stroke-width="2" fill="none"/>
+      <line x1="0" y1="20" x2="40" y2="20" stroke="#000" stroke-width="2"/>
+      <line x1="20" y1="0" x2="20" y2="40" stroke="#000" stroke-width="2"/>
     </g>
-    <g class="window" transform="translate(0,0)">
-      <rect x="360" y="230" width="60" height="60" fill="#ADD8E6" stroke="#000" stroke-width="4"/>
-      <line x1="360" y1="260" x2="420" y2="260" stroke="#000" stroke-width="2"/>
-      <line x1="390" y1="230" x2="390" y2="290" stroke="#000" stroke-width="2"/>
+    <!-- Right Window -->
+    <g class="window" transform="translate(240, 170)">
+      <rect x="0" y="0" width="40" height="40" stroke="#000" stroke-width="2" fill="none"/>
+      <line x1="0" y1="20" x2="40" y2="20" stroke="#000" stroke-width="2"/>
+      <line x1="20" y1="0" x2="20" y2="40" stroke="#000" stroke-width="2"/>
     </g>
 
     <!-- Chimney -->
-    <rect x="320" y="80" width="40" height="80" fill="#555" stroke="#000" stroke-width="4"/>
-    <path id="smoke" d="M340,80 Q330,60 350,50 Q340,30 360,20" fill="none" stroke="#808080" stroke-width="4" stroke-linecap="round"/>
+    <rect x="230" y="60" width="20" height="60" stroke="#000" stroke-width="2" fill="none"/>
+    <!-- Smoke -->
+    <path id="smoke" d="M240,60 Q235,40 245,30 Q240,20 250,10" stroke="#000" stroke-width="2" fill="none" stroke-linecap="round"/>
   </g>
 </svg>
