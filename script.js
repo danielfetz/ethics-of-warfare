@@ -40,18 +40,20 @@ function renderScene(sceneIndex) {
   const scene = scenarios[sceneIndex];
   const sceneDiv = document.getElementById('scene');
   sceneDiv.innerHTML = `
-    <div id="illustration" style="position: relative; width: 200px; height: 300px;">
+    <div id="illustration">
       <!-- Building -->
-      <img src="assets/building.svg" alt="Building" id="building" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 1;" />
+      <img src="assets/building.svg" alt="Building" id="building" />
 
       <!-- Rocket Launcher -->
-      <img src="assets/rocket_launcher.svg" alt="Rocket Launcher" id="rocket-launcher" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 2;" />
+      <img src="assets/rocket_launcher.svg" alt="Rocket Launcher" id="rocket-launcher" />
 
       <!-- Airstrike (Initially Hidden) -->
-      <img src="assets/airstrike.svg" alt="Airstrike" id="airstrike" style="position: absolute; top: -200px; left: 50%; transform: translateX(-50%); z-index: 3; display: none;" />
+      <img src="assets/airstrike.svg" alt="Airstrike" id="airstrike" />
     </div>
-    <h2>Scenario ${sceneIndex + 1}</h2>
-    <p>${scene.description}</p>
+    <div id="scenario-text">
+      <h2>Scenario ${sceneIndex + 1}</h2>
+      <p>${scene.description}</p>
+    </div>
   `;
   renderChoices(scene.choices);
 }
@@ -60,7 +62,7 @@ function renderScene(sceneIndex) {
 function renderChoices(choices) {
   const choicesDiv = document.getElementById('choices');
   choicesDiv.innerHTML = '';
-  choices.forEach(choice => {
+  choices.forEach((choice, index) => {
     const button = document.createElement('button');
     button.className = 'choice-button';
     button.innerText = choice.text;
@@ -69,10 +71,14 @@ function renderChoices(choices) {
   });
 }
 
-// Show feedback
+// Show feedback with fade-in effect
 function showFeedback(text) {
   const feedbackDiv = document.getElementById('feedback');
   feedbackDiv.innerText = text;
+  feedbackDiv.classList.remove('hidden');
+  // Trigger reflow to restart the animation
+  void feedbackDiv.offsetWidth;
+  feedbackDiv.classList.add('visible');
 }
 
 // Show next button (for future expansion)
@@ -118,10 +124,11 @@ function showSplash() {
   splashImg.src = 'assets/splash.svg';
   splashImg.alt = 'Splash';
   splashImg.style.position = 'absolute';
-  splashImg.style.top = '40px'; // Adjust to align with airstrike impact
+  splashImg.style.top = '30px'; // Adjust to align with airstrike impact
   splashImg.style.left = '50%';
   splashImg.style.transform = 'translateX(-50%)';
   splashImg.style.zIndex = '4';
+  splashImg.style.width = '100px';
   sceneDiv.appendChild(splashImg);
 
   // Remove splash after showing
