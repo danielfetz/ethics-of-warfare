@@ -13,12 +13,8 @@ const scenarios = [
       {
         text: "Order the Airstrike",
         action: () => {
-          renderAirstrike();
+          triggerAirstrike();
           gameState.decisions.push('Ordered Airstrike');
-          setTimeout(() => {
-            showFeedback("You ordered an airstrike. The rocket launcher is neutralized, but some civilians may have been harmed.");
-            showNextButton();
-          }, 2000);
         }
       },
       {
@@ -44,13 +40,18 @@ function renderScene(sceneIndex) {
   const scene = scenarios[sceneIndex];
   const sceneDiv = document.getElementById('scene');
   sceneDiv.innerHTML = `
+    <div id="illustration" style="position: relative; width: 200px; height: 300px;">
+      <!-- Building -->
+      <img src="assets/building.svg" alt="Building" id="building" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 1;" />
+
+      <!-- Rocket Launcher -->
+      <img src="assets/rocket_launcher.svg" alt="Rocket Launcher" id="rocket-launcher" style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 2;" />
+
+      <!-- Airstrike (Initially Hidden) -->
+      <img src="assets/airstrike.svg" alt="Airstrike" id="airstrike" style="position: absolute; top: -200px; left: 50%; transform: translateX(-50%); z-index: 3; display: none;" />
+    </div>
     <h2>Scenario ${sceneIndex + 1}</h2>
     <p>${scene.description}</p>
-    <div id="illustration">
-      <img src="assets/building.svg" alt="Building" id="building">
-      <img src="assets/rocket_launcher.svg" alt="Rocket Launcher" id="rocket-launcher">
-      <img src="assets/civilians.svg" alt="Civilians" id="civilians">
-    </div>
   `;
   renderChoices(scene.choices);
 }
@@ -88,48 +89,48 @@ function showNextButton() {
   choicesDiv.appendChild(nextButton);
 }
 
-// Render airstrike animation
-function renderAirstrike() {
-  const sceneDiv = document.getElementById('scene');
-  const airstrikeImg = document.createElement('img');
-  airstrikeImg.src = 'assets/airstrike.svg';
-  airstrikeImg.alt = 'Airstrike';
-  airstrikeImg.id = 'airstrike';
-  airstrikeImg.style.position = 'absolute';
-  airstrikeImg.style.top = '0';
-  airstrikeImg.style.left = '50%';
-  airstrikeImg.style.transform = 'translateX(-50%)';
-  sceneDiv.appendChild(airstrikeImg);
+// Trigger Airstrike Animation
+function triggerAirstrike() {
+  const airstrikeImg = document.getElementById('airstrike');
+  airstrikeImg.style.display = 'block';
 
-  // Animate the airstrike
+  // Animate the airstrike moving down to the building's roof
   airstrikeImg.animate([
-    { transform: 'translate(-50%, 0)' },
-    { transform: 'translate(-50%, 100%)' }
+    { transform: 'translate(-50%, -200px)' }, // Starting above the scene
+    { transform: 'translate(-50%, 0)' } // Landing on the roof
   ], {
     duration: 2000,
-    iterations: 1
+    fill: 'forwards'
   });
 
-  // After animation, show "Splash"
+  // After animation, show "Splash" and feedback
   setTimeout(() => {
-    const splash = document.createElement('div');
-    splash.innerText = "Splash!";
-    splash.style.position = 'absolute';
-    splash.style.bottom = '10px';
-    splash.style.left = '50%';
-    splash.style.transform = 'translateX(-50%)';
-    splash.style.backgroundColor = 'rgba(255,255,255,0.8)';
-    splash.style.padding = '5px 10px';
-    splash.style.border = '2px solid #000';
-    splash.style.borderRadius = '5px';
-    sceneDiv.appendChild(splash);
-
-    // Remove airstrike and splash after showing
-    setTimeout(() => {
-      airstrikeImg.remove();
-      splash.remove();
-    }, 1000);
+    showSplash();
+    showFeedback("You ordered an airstrike. The rocket launcher is neutralized, but some civilians may have been harmed.");
+    showNextButton();
   }, 2000);
+}
+
+// Show Splash Effect
+function showSplash() {
+  const sceneDiv = document.getElementById('scene');
+  const splashImg = document.createElement('img');
+  splashImg.src = 'assets/splash.svg';
+  splashImg.alt = 'Splash';
+  splashImg.style.position = 'absolute';
+  splashImg.style.top = '40px'; // Adjust to align with airstrike impact
+  splashImg.style.left = '50%';
+  splashImg.style.transform = 'translateX(-50%)';
+  splashImg.style.zIndex = '4';
+  sceneDiv.appendChild(splashImg);
+
+  // Remove splash after showing
+  setTimeout(() => {
+    splashImg.remove();
+    // Hide airstrike after impact
+    const airstrikeImg = document.getElementById('airstrike');
+    airstrikeImg.style.display = 'none';
+  }, 1000);
 }
 
 // Start the game
