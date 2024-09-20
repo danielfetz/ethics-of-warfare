@@ -1,0 +1,21 @@
+<!-- splash.svg -->
+<svg width="150" height="100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Speech Bubble -->
+  <path d="M20,20 
+           h80 
+           a10,10 0 0,1 10,10 
+           v40 
+           a10,10 0 0,1 -10,10 
+           h-80 
+           a10,10 0 0,1 -10,-10 
+           v-40 
+           a10,10 0 0,1 10,-10 
+           z" 
+        fill="white" stroke="black" stroke-width="3" />
+  
+  <!-- Tail of the Bubble -->
+  <polygon points="50,60 60,80 40,80" fill="white" stroke="black" stroke-width="3" />
+  
+  <!-- Text -->
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Comic Sans MS" font-size="20" fill="black">Splash!</text>
+</svg>
