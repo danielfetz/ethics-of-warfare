@@ -1,0 +1,45 @@
+<!-- house.svg -->
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- House Structure -->
+  <polygon points="100,20 180,80 180,160 20,160 20,80" fill="#ffe4b5" stroke="black" stroke-width="3"/>
+  
+  <!-- Roof -->
+  <polygon points="100,20 180,80 20,80" fill="#deb887" stroke="black" stroke-width="3"/>
+  
+  <!-- Door -->
+  <rect x="90" y="130" width="20" height="30" fill="#8b4513" stroke="black" stroke-width="3"/>
+  
+  <!-- Windows -->
+  <!-- Window 1 -->
+  <rect x="50" y="90" width="30" height="30" fill="#add8e6" stroke="black" stroke-width="3"/>
+  <!-- Figures in Window 1 -->
+  <circle cx="65" cy="105" r="5" fill="black"/>
+  <circle cx="80" cy="105" r="5" fill="black"/>
+  
+  <!-- Window 2 -->
+  <rect x="120" y="90" width="30" height="30" fill="#add8e6" stroke="black" stroke-width="3"/>
+  <!-- Figures in Window 2 -->
+  <circle cx="135" cy="105" r="5" fill="black"/>
+  <circle cx="150" cy="105" r="5" fill="black"/>
+  
+  <!-- Window 3 -->
+  <rect x="50" y="140" width="30" height="30" fill="#add8e6" stroke="black" stroke-width="3"/>
+  <!-- Figures in Window 3 -->
+  <circle cx="65" cy="155" r="5" fill="black"/>
+  <circle cx="80" cy="155" r="5" fill="black"/>
+  
+  <!-- Window 4 -->
+  <rect x="120" y="140" width="30" height="30" fill="#add8e6" stroke="black" stroke-width="3"/>
+  <!-- Figures in Window 4 -->
+  <circle cx="135" cy="155" r="5" fill="black"/>
+  <circle cx="150" cy="155" r="5" fill="black"/>
+  
+  <!-- Enemy Leader -->
+  <circle cx="100" cy="100" r="10" fill="#000000" stroke="black" stroke-width="2"/>
+  <text x="100" y="105" text-anchor="middle" font-size="8" fill="white">E</text>
+  
+  <!-- Explosives (Simple Representation) -->
+  <circle cx="100" cy="150" r="5" fill="red" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="150" x2="90" y2="160" stroke="black" stroke-width="2"/>
+  <line x1="100" y1="150" x2="110" y2="160" stroke="black" stroke-width="2"/>
+</svg>
