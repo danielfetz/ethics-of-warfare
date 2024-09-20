@@ -1,36 +1,36 @@
 <!-- building.svg -->
-<svg width="200" height="300" xmlns="http://www.w3.org/2000/svg">
+<svg width="200" height="300" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
   <!-- Building Structure -->
-  <rect x="50" y="50" width="100" height="200" fill="none" stroke="black" stroke-width="3" />
+  <rect x="50" y="60" width="100" height="220" fill="#d3d3d3" stroke="black" stroke-width="3" />
 
   <!-- Roof -->
-  <rect x="45" y="40" width="110" height="10" fill="none" stroke="black" stroke-width="3" />
+  <rect x="45" y="50" width="110" height="10" fill="#a9a9a9" stroke="black" stroke-width="3" />
 
   <!-- Door -->
-  <rect x="90" y="220" width="20" height="30" fill="none" stroke="black" stroke-width="3" />
+  <rect x="90" y="230" width="20" height="30" fill="#654321" stroke="black" stroke-width="3" />
 
   <!-- Windows with Civilians -->
   <!-- Window 1 -->
-  <rect x="60" y="80" width="20" height="20" fill="none" stroke="black" stroke-width="3" />
-  <circle cx="70" cy="90" r="5" fill="black" />
+  <rect x="60" y="90" width="20" height="20" fill="#87ceeb" stroke="black" stroke-width="3" />
+  <circle cx="70" cy="100" r="5" fill="black" />
 
   <!-- Window 2 -->
-  <rect x="120" y="80" width="20" height="20" fill="none" stroke="black" stroke-width="3" />
-  <circle cx="130" cy="90" r="5" fill="black" />
+  <rect x="120" y="90" width="20" height="20" fill="#87ceeb" stroke="black" stroke-width="3" />
+  <circle cx="130" cy="100" r="5" fill="black" />
 
   <!-- Window 3 -->
-  <rect x="60" y="130" width="20" height="20" fill="none" stroke="black" stroke-width="3" />
-  <circle cx="70" cy="140" r="5" fill="black" />
+  <rect x="60" y="140" width="20" height="20" fill="#87ceeb" stroke="black" stroke-width="3" />
+  <circle cx="70" cy="150" r="5" fill="black" />
 
   <!-- Window 4 -->
-  <rect x="120" y="130" width="20" height="20" fill="none" stroke="black" stroke-width="3" />
-  <circle cx="130" cy="140" r="5" fill="black" />
+  <rect x="120" y="140" width="20" height="20" fill="#87ceeb" stroke="black" stroke-width="3" />
+  <circle cx="130" cy="150" r="5" fill="black" />
 
   <!-- Window 5 -->
-  <rect x="60" y="180" width="20" height="20" fill="none" stroke="black" stroke-width="3" />
-  <circle cx="70" cy="190" r="5" fill="black" />
+  <rect x="60" y="190" width="20" height="20" fill="#87ceeb" stroke="black" stroke-width="3" />
+  <circle cx="70" cy="200" r="5" fill="black" />
 
   <!-- Window 6 -->
-  <rect x="120" y="180" width="20" height="20" fill="none" stroke="black" stroke-width="3" />
-  <circle cx="130" cy="190" r="5" fill="black" />
+  <rect x="120" y="190" width="20" height="20" fill="#87ceeb" stroke="black" stroke-width="3" />
+  <circle cx="130" cy="200" r="5" fill="black" />
 </svg>
