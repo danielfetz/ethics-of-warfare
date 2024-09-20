@@ -15,7 +15,7 @@ const scenarios = [
       {
         text: "Order the Airstrike",
         action: () => {
-          triggerAirstrike();
+          triggerAirstrike("Scenario1");
           gameState.decisions.push('Ordered Airstrike in Scenario 1');
         }
       },
@@ -38,7 +38,7 @@ const scenarios = [
       {
         text: "Conduct the Airstrike",
         action: () => {
-          triggerAirstrike();
+          triggerAirstrike("Scenario2");
           gameState.decisions.push('Conducted Airstrike in Scenario 2');
         }
       },
@@ -159,13 +159,14 @@ function showFinalFeedback() {
 }
 
 // Trigger Airstrike Animation
-function triggerAirstrike() {
+function triggerAirstrike(scenario) {
   const airstrikeImg = document.getElementById('airstrike');
   airstrikeImg.style.display = 'block';
+  airstrikeImg.style.top = '-250px'; // Reset position
 
   // Animate the airstrike moving down to the illustration
   airstrikeImg.animate([
-    { transform: 'translate(-50%, -200px)' }, // Starting above the scene
+    { transform: 'translate(-50%, -250px)' }, // Starting above the scene
     { transform: 'translate(-50%, 0)' } // Landing on the illustration
   ], {
     duration: 2000,
@@ -175,10 +176,9 @@ function triggerAirstrike() {
   // After animation, show "Splash" and feedback
   setTimeout(() => {
     showSplash();
-    const currentScene = scenarios[gameState.currentScene];
-    if (currentScene.id === 0) {
+    if (scenario === "Scenario1") {
       showFeedback("You ordered an airstrike. The rocket launcher is neutralized, but some civilians may have been harmed.");
-    } else if (currentScene.id === 1) {
+    } else if (scenario === "Scenario2") {
       showFeedback("You conducted an airstrike. The enemy leader is eliminated, but many civilians have been harmed.");
     }
     showNextButton();
