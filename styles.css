@@ -15,8 +15,8 @@ body {
 }
 
 #game-container {
-  width: 90%;
-  max-width: 800px;
+  width: 95%;
+  max-width: 1200px;
   background-color: #ffffff;
   border: 2px solid #000000;
   border-radius: 10px;
@@ -25,21 +25,23 @@ body {
   flex-direction: column;
   align-items: center;
   position: relative;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
 #scene {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  align-items: flex-start;
   margin-bottom: 20px;
+  gap: 20px;
 }
 
 #illustration {
   position: relative;
-  width: 200px;
-  height: 300px;
-  margin-bottom: 20px;
+  width: 300px;
+  height: 450px;
+  flex-shrink: 0;
 }
 
 #illustration img {
@@ -47,43 +49,59 @@ body {
   transition: all 0.5s ease;
 }
 
+#illustration-img {
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+#airstrike {
+  width: 50%;
+  height: auto;
+  top: -250px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: none;
+}
+
 #scenario-text {
-  text-align: center;
-  margin-bottom: 20px;
+  flex-grow: 1;
+  text-align: left;
+  font-size: 1.2em;
+  line-height: 1.6;
 }
 
 #scenario-text h2 {
   margin-bottom: 10px;
 }
 
-#scenario-text p {
-  font-size: 1.1em;
-  line-height: 1.4;
-}
-
 #choices {
+  width: 100%;
   display: flex;
   gap: 20px;
+  justify-content: center;
   margin-bottom: 20px;
 }
 
 .choice-button {
-  padding: 10px 20px;
+  padding: 15px 30px;
   background-color: #007BFF;
   border: 2px solid #000;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .choice-button:hover {
   background-color: #0056b3;
+  transform: scale(1.05);
 }
 
 #feedback {
   width: 100%;
-  padding: 15px;
+  padding: 20px;
   background-color: #ffeb3b;
   border: 2px solid #000;
   border-radius: 5px;
@@ -91,10 +109,11 @@ body {
   font-weight: bold;
   opacity: 0;
   transition: opacity 1s ease;
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  max-width: 90%;
 }
 
 #feedback.visible {
@@ -103,4 +122,43 @@ body {
 
 .hidden {
   display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #scene {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #illustration {
+    width: 250px;
+    height: 375px;
+  }
+
+  #scenario-text {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #illustration {
+    width: 200px;
+    height: 300px;
+  }
+
+  #choices {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .choice-button {
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  #feedback {
+    padding: 15px;
+    font-size: 1em;
+  }
 }
