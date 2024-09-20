@@ -76,6 +76,11 @@ body {
   margin-bottom: 10px;
 }
 
+#scenario-text p {
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+
 #choices {
   width: 100%;
   display: flex;
