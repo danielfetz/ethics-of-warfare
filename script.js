@@ -95,8 +95,6 @@ function showFeedback(text) {
   const feedbackDiv = document.getElementById('feedback');
   feedbackDiv.innerText = text;
   feedbackDiv.classList.remove('hidden');
-  // Trigger reflow to restart the animation
-  void feedbackDiv.offsetWidth;
   feedbackDiv.classList.add('visible');
 }
 
@@ -153,8 +151,6 @@ function showFinalFeedback() {
 
   feedbackDiv.innerText = summary;
   feedbackDiv.classList.remove('hidden');
-  // Trigger reflow to restart the animation
-  void feedbackDiv.offsetWidth;
   feedbackDiv.classList.add('visible');
 }
 
@@ -187,24 +183,31 @@ function triggerAirstrike(scenario) {
 
 // Show Splash Effect
 function showSplash() {
-  const sceneDiv = document.getElementById('scene');
+  const illustrationDiv = document.getElementById('illustration');
   const splashImg = document.createElement('img');
   splashImg.src = 'assets/splash.svg';
   splashImg.alt = 'Splash';
   splashImg.style.position = 'absolute';
-  splashImg.style.top = '30px'; // Adjust to align with airstrike impact
-  splashImg.style.left = '50%';
-  splashImg.style.transform = 'translateX(-50%)';
+  splashImg.style.top = '50%'; // Center vertically
+  splashImg.style.left = '50%'; // Center horizontally
+  splashImg.style.transform = 'translate(-50%, -50%)'; // Offset to center
   splashImg.style.zIndex = '4';
   splashImg.style.width = '100px';
-  sceneDiv.appendChild(splashImg);
+  illustrationDiv.appendChild(splashImg);
 
-  // Remove splash after showing
+  // After showing the splash, remove it and hide the illustration image
   setTimeout(() => {
     splashImg.remove();
-    // Hide airstrike after impact
+    // Hide the illustration image (building or house)
+    const illustrationImg = document.getElementById('illustration-img');
+    if (illustrationImg) {
+      illustrationImg.style.display = 'none';
+    }
+    // Hide airstrike image after impact
     const airstrikeImg = document.getElementById('airstrike');
-    airstrikeImg.style.display = 'none';
+    if (airstrikeImg) {
+      airstrikeImg.style.display = 'none';
+    }
   }, 1000);
 }
 
