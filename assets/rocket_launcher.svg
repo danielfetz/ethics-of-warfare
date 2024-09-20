@@ -1,12 +1,12 @@
 <!-- rocket_launcher.svg -->
-<svg width="110" height="60" xmlns="http://www.w3.org/2000/svg">
+<svg width="110" height="60" viewBox="0 0 110 60" xmlns="http://www.w3.org/2000/svg">
   <!-- Tripod -->
   <line x1="55" y1="50" x2="35" y2="30" stroke="black" stroke-width="3" />
   <line x1="55" y1="50" x2="75" y2="30" stroke="black" stroke-width="3" />
   <line x1="35" y1="30" x2="75" y2="30" stroke="black" stroke-width="3" />
 
   <!-- Launcher -->
-  <rect x="53" y="0" width="4" height="30" fill="none" stroke="black" stroke-width="3" />
+  <rect x="53" y="0" width="4" height="30" fill="#2f4f4f" stroke="black" stroke-width="3" />
 
   <!-- Crossbar -->
   <line x1="53" y1="15" x2="57" y2="15" stroke="black" stroke-width="3" />
