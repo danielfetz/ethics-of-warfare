@@ -1,115 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
   <style>
-    <![CDATA[
-      /* Door Animation */
-      #door {
-        animation: doorSwing 400ms linear infinite alternate-reverse forwards;
-      }
-
-      @keyframes doorSwing {
-        0% {
-          transform: rotate(0deg);
-          transform-origin: left center;
-          animation-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
-        }
-        100% {
-          transform: rotate(-15deg);
-        }
-      }
-
-      /* Window Shimmer Animation */
-      .window-shimmer {
-        animation: shimmer 2000ms linear infinite;
-      }
-
-      @keyframes shimmer {
-        0% {
-          stroke-dashoffset: 0;
-        }
-        100% {
-          stroke-dashoffset: -200;
-        }
-      }
-
-      /* Smoke Animation */
-      #smoke {
-        animation: smokeRise 3000ms linear infinite;
-      }
-
-      @keyframes smokeRise {
-        0% {
-          transform: translate(0, 0) scale(1);
-          opacity: 0.6;
-        }
-        100% {
-          transform: translate(0, -30px) scale(1.2);
-          opacity: 0;
-        }
-      }
-    ]]>
+    .sketch-line {
+      fill: none;
+      stroke: #000;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .rocket-animation {
+      animation: rocketLaunch 2s infinite;
+    }
+    @keyframes rocketLaunch {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(200px, -200px); }
+    }
   </style>
 
-  <!-- House Structure -->
-  <g id="house" transform="translate(100, 100)" stroke="#000" stroke-width="2" fill="none">
-    <!-- Roof -->
-    <path d="M200,50 L100,150 L300,150 Z" />
+  <!-- House Body -->
+  <rect x="200" y="200" width="200" height="150" class="sketch-line" />
 
-    <!-- Main Body -->
-    <rect x="100" y="150" width="200" height="200" />
+  <!-- Roof -->
+  <polygon points="200,200 300,100 400,200" class="sketch-line" />
 
-    <!-- Door -->
-    <g id="door" transform="translate(180, 250)">
-      <path d="M0,0 L40,0 L40,100 L0,100 Z" />
-      <circle cx="35" cy="50" r="3" />
-      <!-- Door Knob -->
-      <circle cx="35" cy="50" r="3" fill="#000" />
-    </g>
+  <!-- Door -->
+  <rect x="275" y="275" width="50" height="75" class="sketch-line" />
 
-    <!-- Windows -->
-    <!-- Left Window -->
-    <g class="window-shimmer" transform="translate(120, 170)">
-      <path d="M0,0 L40,0 L40,40 L0,40 Z" />
-      <line x1="0" y1="20" x2="40" y2="20" />
-      <line x1="20" y1="0" x2="20" y2="40" />
-    </g>
-    <!-- Right Window -->
-    <g class="window-shimmer" transform="translate(240, 170)">
-      <path d="M0,0 L40,0 L40,40 L0,40 Z" />
-      <line x1="0" y1="20" x2="40" y2="20" />
-      <line x1="20" y1="0" x2="20" y2="40" />
-    </g>
+  <!-- Windows -->
+  <rect x="225" y="225" width="40" height="40" class="sketch-line" />
+  <rect x="335" y="225" width="40" height="40" class="sketch-line" />
 
-    <!-- Chimney -->
-    <path d="M230,60 L230,120 L250,120 L250,60 Z" />
-
-    <!-- Smoke -->
-    <path id="smoke" d="M240,60 Q235,40 245,30 Q240,20 250,10" stroke="#555" stroke-width="2" fill="none" stroke-linecap="round"/>
-    
-    <!-- Additional Details for Complexity -->
-    <!-- Roof Tiles -->
-    <g id="roof-tiles">
-      <path d="M100,150 L300,150" stroke="#000" stroke-width="1" stroke-dasharray="5,5"/>
-      <path d="M150,100 L150,150" stroke="#000" stroke-width="1" stroke-dasharray="5,5"/>
-      <path d="M200,50 L200,150" stroke="#000" stroke-width="1" stroke-dasharray="5,5"/>
-      <path d="M250,100 L250,150" stroke="#000" stroke-width="1" stroke-dasharray="5,5"/>
-    </g>
-
-    <!-- Porch -->
-    <g id="porch" transform="translate(160, 250)">
-      <path d="M0,0 L80,0" />
-      <path d="M0,0 L0,-20" />
-      <path d="M80,0 L80,-20" />
-      <line x1="0" y1="-20" x2="80" y2="-20" stroke="#000" stroke-width="2"/>
-      <!-- Steps -->
-      <g id="steps">
-        <path d="M10,0 L10,10 L30,10 L30,20 L50,20 L50,30" stroke="#000" stroke-width="2"/>
-      </g>
-    </g>
-
-    <!-- Garage Door -->
-    <g id="garage" transform="translate(100, 180)">
-      <path d="M0,0 L0,70 L100,70 L100,0 Z" />
-      <line x1="50" y1="0" x2="50" y2="70" />
-    </g>
+  <!-- Rocket Launcher -->
+  <g transform="translate(300,170)">
+    <!-- Base of the launcher -->
+    <rect x="-10" y="0" width="20" height="20" class="sketch-line" />
+    <!-- Launcher tube -->
+    <rect x="-5" y="-50" width="10" height="50" class="sketch-line" />
   </g>
+
+  <!-- Rocket -->
+  <g class="rocket-animation" transform="translate(300,120)">
+    <polygon points="0,0 5,-10 0,-20 -5,-10" class="sketch-line" fill="#f00" />
+    <!-- Rocket trail -->
+    <path d="M0,0 C0,10 -10,20 -10,30" class="sketch-line" stroke="#f00" />
+  </g>
+
 </svg>
